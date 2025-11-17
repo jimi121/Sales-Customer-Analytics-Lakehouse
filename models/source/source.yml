@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: sales_data_warehouse
+    schema: raw_data
+    tables:
+      - name: customer_information
+        description: Raw customer info from CRM system
+      - name: product_information
+        description: Raw product info from CRM system
+      - name: sales_details
+        description: Raw sales details from CRM system
+      - name: customer_extras
+        description: Raw customer extras from ERP system
+      - name: customer_location
+        description: Raw customer locations from ERP system
+      - name: product_category
+        description: Raw product categories from ERP system

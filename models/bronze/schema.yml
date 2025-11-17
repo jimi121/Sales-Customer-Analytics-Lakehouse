@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  # Silver Layer Tests
+  - name: silver_crm_cust_info
+    columns:
+      - name: cst_id
+        tests:
+          - unique
+          - not_null
+      - name: cst_key
+        tests:
+          - not_null
+      - name: cst_create_date
+        tests:
+          - not_null
+      - name: cst_marital_status
+        tests:
+          - accepted_values:
+              values: ['Single', 'Married', 'Unknown']
+      - name: cst_gndr
+        tests:
+          - accepted_values:
+              values: ['Female', 'Male', 'Unknown']
+  - name: silver_crm_prd_info
+    columns:
+      - name: prd_id
+        tests:
+          - unique
+          - not_null
+      - name: prd_start_dt
+        tests:
+          - not_null
+  - name: silver_crm_sales_details
+    columns:
+      - name: sls_ord_num
+        tests:
+          - not_null
+      - name: sls_cust_id
+        tests:
+          - not_null
+  - name: silver_erp_cust_extras
+    columns:
+      - name: cid
+        tests:
+          - unique
+          - not_null
+      - name: gen
+        tests:
+          - accepted_values:
+              values: ['Female', 'Male', 'Unknown']
+  - name: silver_erp_cust_loc
+    columns:
+      - name: cid
+        tests:
+          - unique
+          - not_null
+  - name: silver_erp_prd_cat
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+
+  # Gold Layer Tests
+  - name: gold_dim_customers
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: gender
+        tests:
+          - accepted_values:
+              values: ['Female', 'Male', 'Unknown']
+  - name: gold_dim_products
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+  - name: gold_fact_sales
+    columns:
+      - name: order_number
+        tests:
+          - not_null
+      - name: product_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('gold_dim_products')
+              field: product_key
+      - name: customer_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('gold_dim_customers')
+              field: customer_key
+
+              # Reporting Layer Tests
+  - name: customer_insights_report
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+          - not_null
+  - name: product_insights_report
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
