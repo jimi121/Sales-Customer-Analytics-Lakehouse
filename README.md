@@ -59,8 +59,7 @@ I designed this project to:
 
 Below is the full workflow from ingestion to reporting.
 
-👉 **Insert Architecture Diagram Here**
-*(Recommended diagram: Source Folder → Auto Loader → raw_data Volumes → dbt Bronze → dbt Silver → dbt Gold → Power BI)*
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Data%20Architecture.png")
 
 ---
 
@@ -92,14 +91,6 @@ Auto Loader was used because it handles:
 * checkpointing
 * incremental updates
 
-Each dataset lands under:
-
-```
-/Volumes/<catalog>/<schema>/raw_data/<source>/<table>/data/
-```
-
-👉 **Add Screenshot: Raw Data Volume Structure**
-
 ---
 
 ## 6.2 🧱 Bronze Layer (dbt)
@@ -114,7 +105,7 @@ Here I focused on:
 
 Because some datasets can have new files added over time, **Bronze models use incremental logic** in dbt to avoid reprocessing the entire dataset.
 
-👉 **Add Code Snippet: Bronze Incremental Model**
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Bronze%20ingestion.PNG")
 
 ---
 
@@ -139,10 +130,12 @@ I implemented **dbt tests** here, including:
 * `relationships`
 * custom tests using macros
 
-👉 **Add Example: dbt Test YAML**
-👉 **Add Example: Macro for Data Standardization**
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Test.PNG")
+
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Silver.PNG")
 
 Silver tables serve as the "single source of truth" for the business.
+
 
 ---
 
@@ -165,7 +158,7 @@ I designed a **Star Schema** with:
 
 Facts contain numeric metrics; dimensions contain descriptive attributes.
 
-👉 **Insert Diagram: Star Schema Model**
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Gold_Fact_Table.png")
 
 These Gold tables feed directly into Power BI.
 
@@ -182,7 +175,7 @@ I created a multi-task job that automates the entire pipeline:
 
 This means once new CSV files land in the source folder, the entire pipeline runs from ingestion to dashboards.
 
-👉 **Insert Screenshot: Databricks Pipeline Configuration**
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/pipeline.PNG")
 
 ---
 
@@ -195,7 +188,7 @@ Here is an interpretation of each, written in a recruiter-friendly way.
 
 ## 7.1 **Sales Performance Dashboard**
 
-👉 **Insert Sales Dashboard Image**
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Sales%20Performance%20Dashboard.PNG")
 
 ### Key findings:
 
@@ -223,7 +216,7 @@ Monthly sales show a steady upward trend, indicating strong demand momentum.
 
 ## 7.2 **Customer Insights Dashboard**
 
-👉 **Insert Customer Dashboard Image**
+![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Customer%20Insights%20Dashboard.PNG")
 
 ### Key findings:
 
