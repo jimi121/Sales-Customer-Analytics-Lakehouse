@@ -59,7 +59,7 @@ I designed this project to:
 
 Below is the full workflow from ingestion to reporting.
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Data%20Architecture.png")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Data%20Architecture.png)
 
 ---
 
@@ -105,7 +105,7 @@ Here I focused on:
 
 Because some datasets can have new files added over time, **Bronze models use incremental logic** in dbt to avoid reprocessing the entire dataset.
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Bronze%20ingestion.PNG")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Bronze%20ingestion.PNG)
 
 ---
 
@@ -130,9 +130,9 @@ I implemented **dbt tests** here, including:
 * `relationships`
 * custom tests using macros
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Test.PNG")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Test.PNG)
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Silver.PNG")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Silver.PNG)
 
 Silver tables serve as the "single source of truth" for the business.
 
@@ -158,7 +158,7 @@ I designed a **Star Schema** with:
 
 Facts contain numeric metrics; dimensions contain descriptive attributes.
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Gold_Fact_Table.png")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Gold_Fact_Table.png)
 
 These Gold tables feed directly into Power BI.
 
@@ -175,7 +175,7 @@ I created a multi-task job that automates the entire pipeline:
 
 This means once new CSV files land in the source folder, the entire pipeline runs from ingestion to dashboards.
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/pipeline.PNG")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/pipeline.PNG)
 
 ---
 
@@ -188,7 +188,7 @@ Here is an interpretation of each, written in a recruiter-friendly way.
 
 ## 7.1 **Sales Performance Dashboard**
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Sales%20Performance%20Dashboard.PNG")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Sales%20Performance%20Dashboard.PNG)
 
 ### Key findings:
 
@@ -216,7 +216,7 @@ Monthly sales show a steady upward trend, indicating strong demand momentum.
 
 ## 7.2 **Customer Insights Dashboard**
 
-![]("https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Customer%20Insights%20Dashboard.PNG")
+![](https://github.com/jimi121/Sales-Customer-Analytics-Lakehouse/blob/main/Image/Customer%20Insights%20Dashboard.PNG)
 
 ### Key findings:
 
